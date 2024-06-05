@@ -1,0 +1,11 @@
+{% extends 'silsite/base.html' %}
+
+{% block content %}
+    <h1>{{ text }}</h1>
+    <form method='POST'>{% csrf_token %}
+ 	После какого слайда показать видео(одно число)<input  type='input' name='video_wishes'><br>
+	Ссылка на видео на ютуб<input  type='input' name='video'><br>
+	(требования к видео есть в инструкции, главное проверьте, что вы открыли к нему доступ) <br>
+	<input type='submit' value='Добавить видео' name='add_video' id = 'my_buttons' class="btn btn-primary">
+    </form>
+{% endblock %}

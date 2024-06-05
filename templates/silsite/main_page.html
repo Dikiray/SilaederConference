@@ -1,0 +1,40 @@
+{% extends 'silsite/base.html' %}
+
+{% block content2 %}
+    <a href = "{% url 'new_project' %}">New project</a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <p class="content-description">Зарегистрированные проекты</p>
+        <table class="project-table">
+            <thead>
+                <tr class="project-table-header">
+                    <td>Название проекта</td>
+                    <td>Научный руководитель</td>
+                    <td>Есть презентация</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if projects %}
+                    {% for project in projects %}
+                        <tr>
+                            <td><a href="http://192.168.2.21:1488/projects/project/{{ project.id }}/">{{ project.name }}</a></td>
+                            <td><a href="http://192.168.2.21:1488/user/{{ project.teacher}}/">{{ project.teacher.last_name }} {{ project.teacher.first_name }}</a></td>
+                            {% if project.presentation == ''%}
+                                <td>Нет</td>
+                            {% else %}
+                                <td>Да</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>Здесь пусто</td><td></td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

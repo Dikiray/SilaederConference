@@ -1,0 +1,27 @@
+{% extends 'silsite/base.html' %}
+
+{% block content %}
+    <h1>Изменить проект</h1>
+    <form enctype="multipart/form-data" method='POST'>{% csrf_token %}
+    {{ form.as_p }}
+    <!-- <div style="margin-bottom: 10px">Краткое описание: <input type='file' name='short_text' value={{ short_text }}></div> -->
+    <!-- <div style="margin-bottom: 10px">Полный текс: <input type='file' name='text'></div> -->
+    <a>Время доклада(от 0 до 15 минут)без указания размерности: <input type="text" size=10 name="time"></a>
+    <br></br>
+    <a>Направление вашего проекта:</a>
+    <select name="project_direction" style="lenght: 200px">
+      <option>Биология</option>
+      <option>Информатика</option>
+      <option>История</option>
+      <option>Лингвистика</option>
+      <option>Литература</option>
+      <option>Математика</option>
+      <option>Робототехника</option>
+      <option>Физика</option>
+      <option>Химия</option>
+      <option>Английский язык</option>
+    </select>
+    <br></br>
+    <div style="margin-bottom: 10px">Презентация для конференции(в формате .pdf): <input type='file' name='presentation'></div>
+    <input class = 'btn btn-primary' type='submit' id='my_buttons' value='Сохранить'>
+{% endblock %}
